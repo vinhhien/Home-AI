@@ -3,135 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real Estate Near Me - Zillow Style</title>
+  <title>Real Estate Near Me - Live ATTOM Data</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #f7f7f7;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .search-bar {
-      display: flex;
-      gap: 10px;
-      flex: 1;
-      margin-left: 20px;
-    }
-    .search-bar input, .search-bar select {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-    .container {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-    }
-    #sidebar {
-      width: 400px;
-      background: #fff;
-      overflow-y: auto;
-      border-right: 1px solid #ddd;
-      padding: 10px;
-    }
-    #map {
-      flex: 1;
-      height: 100%;
-    }
-    .listing {
-      padding: 16px;
-      border-bottom: 1px solid #eee;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .listing:hover {
-      background: #f0f0f0;
-    }
-    .listing img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      height: 200px;
-      object-fit: cover;
-    }
-    .listing h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-    .listing p {
-      margin: 4px 0;
-      font-size: 14px;
-      color: #777;
-    }
-    #chatbox {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      width: 300px;
-      height: 400px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      flex-direction: column;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-    }
-    #chatbox-header {
-      padding: 10px;
-      background: #007BFF;
-      color: white;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    #close-chat {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    #chatbox-messages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-    }
-    #chatbox-input {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid #ccc;
-    }
-    #chatbox-input input {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-right: 8px;
-    }
-    #chatbox-input button {
-      padding: 8px 12px;
-      background: #007BFF;
-      border: none;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+    body { margin: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f7f7f7; height: 100vh; display: flex; flex-direction: column; }
+    header { background: white; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+    .search-bar { display: flex; gap: 10px; flex: 1; margin-left: 20px; }
+    .search-bar input, .search-bar select { padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    .container { display: flex; flex: 1; overflow: hidden; }
+    #sidebar { width: 400px; background: #fff; overflow-y: auto; border-right: 1px solid #ddd; padding: 10px; }
+    #map { flex: 1; height: 100%; }
+    .listing { padding: 16px; border-bottom: 1px solid #eee; cursor: pointer; transition: background 0.3s; }
+    .listing:hover { background: #f0f0f0; }
+    .listing img { width: 100%; border-radius: 8px; margin-bottom: 8px; height: 200px; object-fit: cover; }
+    .listing h3 { margin: 0 0 8px; font-size: 18px; }
+    .listing p { margin: 4px 0; font-size: 14px; color: #777; }
+    #chatbox { position: fixed; bottom: 20px; right: 20px; background: white; border: 1px solid #ccc; border-radius: 10px; width: 300px; height: 400px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); flex-direction: column; z-index: 1000; display: flex; flex-direction: column; }
+    #chatbox-header { padding: 10px; background: #007BFF; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+    #close-chat { background: transparent; border: none; color: white; font-size: 18px; cursor: pointer; }
+    #chatbox-messages { flex: 1; padding: 10px; overflow-y: auto; }
+    #chatbox-input { display: flex; padding: 10px; border-top: 1px solid #ccc; }
+    #chatbox-input input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-right: 8px; }
+    #chatbox-input button { padding: 8px 12px; background: #007BFF; border: none; color: white; border-radius: 4px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -140,20 +32,8 @@
   <div style="font-size: 22px; font-weight: bold;">🏡 Find Your Home</div>
   <div class="search-bar">
     <input type="text" placeholder="Search by location...">
-    <select>
-      <option value="">Price Range</option>
-      <option value="0-300000">Up to $300K</option>
-      <option value="300000-600000">$300K - $600K</option>
-      <option value="600000-1000000">$600K - $1M</option>
-      <option value="1000000">$1M+</option>
-    </select>
-    <select>
-      <option value="">Bedrooms</option>
-      <option value="1">1+</option>
-      <option value="2">2+</option>
-      <option value="3">3+</option>
-      <option value="4">4+</option>
-    </select>
+    <select><option value="">Price Range</option><option value="0-300000">Up to $300K</option><option value="300000-600000">$300K - $600K</option><option value="600000-1000000">$600K - $1M</option><option value="1000000">$1M+</option></select>
+    <select><option value="">Bedrooms</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
   </div>
 </header>
 
@@ -177,12 +57,6 @@
 </div>
 
 <script>
-const properties = [
-  { id: 1, title: "Modern Family House", price: 500000, bedrooms: 4, lat: 37.7749, lng: -122.4194, img: "https://placekitten.com/600/400", address: "1234 Main St, San Francisco, CA" },
-  { id: 2, title: "Cozy Condo Downtown", price: 350000, bedrooms: 2, lat: 37.7849, lng: -122.4094, img: "https://placekitten.com/601/400", address: "5678 Market St, San Francisco, CA" },
-  { id: 3, title: "Luxury Villa", price: 1200000, bedrooms: 5, lat: 37.7649, lng: -122.4294, img: "https://placekitten.com/602/400", address: "91011 Sunset Blvd, San Francisco, CA" },
-];
-
 let map;
 
 function initMap() {
@@ -191,43 +65,73 @@ function initMap() {
     zoom: 12,
     center: center,
   });
-
-  properties.forEach(prop => {
-    const marker = new google.maps.Marker({
-      position: { lat: prop.lat, lng: prop.lng },
-      map: map,
-      title: prop.title,
-    });
-
-    const infowindow = new google.maps.InfoWindow({
-      content: `<strong>${prop.title}</strong><br>$${prop.price.toLocaleString()}<br>${prop.address}`
-    });
-
-    marker.addListener("click", () => {
-      infowindow.open(map, marker);
-    });
-  });
+  loadProperties();
 }
 
 const sidebar = document.getElementById('sidebar');
 
+function loadProperties() {
+  fetch('https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/snapshot?postalcode=94103&propertytype=RES', {
+    method: 'GET',
+    headers: { 'apikey': '0eb7fd675e846ebd5282b31ee821ce6f' }
+  })
+  .then(response => response.json())
+  .then(data => {
+    const properties = data.property;
+    renderListings(properties);
+    addMarkers(properties);
+  })
+  .catch(error => console.error('Error fetching ATTOM data:', error));
+}
+
 function renderListings(list) {
   sidebar.innerHTML = '';
   list.forEach(prop => {
+    const address = prop.address && prop.address.line1 ? prop.address.line1 : "Address unavailable";
+    const city = prop.address && prop.address.city ? prop.address.city : "";
+    const state = prop.address && prop.address.state ? prop.address.state : "";
+    const price = prop.saleamount && prop.saleamount.amount ? `$${Number(prop.saleamount.amount).toLocaleString()}` : "Price unavailable";
+
     const listing = document.createElement('div');
     listing.className = 'listing';
     listing.innerHTML = `
-      <img src="${prop.img}" alt="${prop.title}">
-      <h3>${prop.title}</h3>
-      <p>$${prop.price.toLocaleString()}</p>
-      <p>${prop.address}</p>
+      <img src="https://placehold.co/600x400?text=House+Photo" alt="${address}">
+      <h3>${address}</h3>
+      <p>${price}</p>
+      <p>${city}, ${state}</p>
     `;
     listing.addEventListener('click', () => {
-      map.setCenter({ lat: prop.lat, lng: prop.lng });
-      map.setZoom(15);
-      document.getElementById('chatbox-messages').innerHTML = `<div><em>Start chatting about: <b>${prop.title}</b></em></div>`;
+      if (prop.location && prop.location.latitude && prop.location.longitude) {
+        map.setCenter({ lat: parseFloat(prop.location.latitude), lng: parseFloat(prop.location.longitude) });
+        map.setZoom(15);
+        document.getElementById('chatbox-messages').innerHTML = `<div><em>Start chatting about: <b>${address}</b></em></div>`;
+      }
     });
     sidebar.appendChild(listing);
+  });
+}
+
+function addMarkers(list) {
+  list.forEach(prop => {
+    if (prop.location && prop.location.latitude && prop.location.longitude) {
+      const address = prop.address && prop.address.line1 ? prop.address.line1 : "Address unavailable";
+      const city = prop.address && prop.address.city ? prop.address.city : "";
+      const state = prop.address && prop.address.state ? prop.address.state : "";
+
+      const marker = new google.maps.Marker({
+        position: { lat: parseFloat(prop.location.latitude), lng: parseFloat(prop.location.longitude) },
+        map: map,
+        title: address,
+      });
+
+      const infowindow = new google.maps.InfoWindow({
+        content: `<strong>${address}</strong><br>${city}, ${state}`
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      });
+    }
   });
 }
 
@@ -243,8 +147,6 @@ function sendMessage() {
     messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 }
-
-renderListings(properties);
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHd164m_2h1Y4HaSxalkeamb3rFv-4sGU&callback=initMap" async defer></script>
